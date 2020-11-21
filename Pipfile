@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 pytesseract = "*"
-lxml = "*"
+requests-html = "*"
 
 [dev-packages]
 
