@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="gl" />
+    <meta name="robots" content="index, nofollow" />
+    <meta name="title" content="centroseducativos" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+    <meta name="description" content="Consulta e mantemento de centros" />
+    <meta name="author" content='Consellería de Cultura, Educación e Universidade' />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<!-- TITULO -->
+	<title>
+	    centroseducativos
+	</title>
+		
+	
+	<script type="text/javascript">
+		menuActivo = '';					
+	</script>
+	
+	<script type="text/javascript">
+		pageLoader = 'si';					
+	</script>
+  	<!-- HEADER -->
+	
+
+
+
+
+<link charset="UTF-8" href="https://www.edu.xunta.es/recursosweb/estilos/principal/glyphicons/glyphicons.css" rel="stylesheet" type="text/css"/>
+<link charset="UTF-8" href="https://www.edu.xunta.es/recursosweb/estilos/principal/font-awesome-4.6.3/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link charset="UTF-8" href="https://www.edu.xunta.es/recursosweb/estilos/principal/estilosMaquetaAmtega.css" rel="stylesheet" type="text/css"/>
+
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/jquery-2.2.4/jquery.min.js" type="text/javascript"></script>
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/animacions.js" type="text/javascript"></script>
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/menu-edu-2.0.0/menu-edu.js" type="text/javascript"></script>
+
+
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/bowser-1.8.1/bowser.js" type="text/javascript"></script>
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/support.js" type="text/javascript"></script>
+
+<!-- ********************************************** -->
+<!--            Funcionalidades comúns              -->
+<!-- ********************************************** -->
+
+
+<!--
+	/*****************************************************************************\
+	Nesta paxina se incluen as funcionalidades comuns para:
+		Estilos para a visualizacion correcta en IE 6 e 7
+		Visualizacion do evento onFocus no IE 7
+		Activa a visualizacion dos divs "js" no caso de haber javascript
+		Definición de bordes estandar para navegadores distintos de IE
+	/*****************************************************************************\
+-->
+<!-- Visualizacion correcta do div de mensaxes e botóns link en ie 8-->
+
+<!--[if IE 8]>
+	<style>
+		a.botazul, 
+		a.botdourado{
+			padding: 0.19em;
+		}			
+	</style>
+<![endif]-->
+
+<!-- Visualizacion correcta do div de mensaxes e botóns link en ie6 e 7-->
+
+<!--[if lte IE 7]>
+	<style>
+		a.botazul, 
+		a.botdourado{
+			display:inline-block;
+			padding: 0.32em;
+		}		
+	</style>
+<![endif]-->
+
+<!-- Visualizacion correcta de combos -->
+
+<!--[if IE 7]>
+	<style>
+		fieldset {
+			padding: 0.5em;
+		}
+		#corpo {
+			padding-top: 0;
+		}
+		.LayoutCamposHorizontal DIV.EtiquetaArriba{	
+			line-height: normal;
+		}
+		.informacionContexto ~ h1 {
+			margin-left:17%;
+		}
+	</style>
+<![endif]-->
+
+<!--  Forzar informacion de contexto a dereita e estilos basicos de controis -->
+<!--[if lt IE 7]>
+	<style>
+		.informacionContexto {
+			text-align: right;
+			padding: 0;
+		}
+		.AnchoMetade .LayoutCamposHorizontal div {
+			margin-right: 6% !important;
+		}		
+		.LayoutCamposHorizontal div {
+		 	margin-right: 3% !important;
+		}		
+		label {
+			float:left;
+		}
+		INPUT, 
+		SELECT,
+		SELECT.combo,
+		SELECT.formularioinactivo, 
+		INPUT.formulario,
+		INPUT.formularioinactivo,
+		TEXTAREA.formulario,
+		TEXTAREA.formularioinactivo,
+		TEXTAREA {
+				clear:left;		
+				color: #000;
+			 	background-color: #fff;	
+			 	border: 0.08em solid #000000;				
+			  	}	
+	</style>
+<![endif]-->
+
+<!-- 
+     Activa a visualizacion dos divs "js" no caso de haber javascript
+     Definicion de bordes estandar para navegadores distintos de IE 
+ -->
+
+<script type="text/javascript">
+
+	// Si javascript esta activo poñemos visible o estilo "js"
+	document.write("<style>.js{ display: block}<\/style>");
+	
+	// Borde negro en firefox, Opera, etc...
+	/*
+	var ie = document.all != undefined;
+	if (!(ie)) {
+	 document.write("<style> fieldset { border: 0.1em solid #BFB8BF; } </style>");
+   	}
+   	*/
+</script>
+
+
+<!--  Indicase o entorno no que nos movemos -->
+<script type="text/javascript">
+	var meuhostname = (document.location.hostname).toLowerCase();
+	
+	
+	//cando xa non teñamos os dominios www.probas.edu.xunta.es nin www.des.edu.xunta.es imos poder empregar a ER /\w*.edu.xunta/" para detectar cando estamos en produción
+	if (meuhostname.indexOf("www.edu.xunta.") == 0) {
+		// Se é producción, non visualizamos nada
+	}else {
+		//eliminamos todo o que non aporta info do entorno
+		meuhostname = meuhostname.replace("www","");
+		meuhostname = meuhostname.replace("auth-edu","");
+		meuhostname = meuhostname.replace(".edu","");
+		meuhostname = meuhostname.replace(".edu2","");
+		meuhostname = meuhostname.replace("edu","");
+		meuhostname = meuhostname.replace("edu2","");
+		meuhostname = meuhostname.replace(".extranet","");
+		meuhostname = meuhostname.replace(".xunta","");
+		meuhostname = meuhostname.replace(".es","");
+		meuhostname = meuhostname.replace(".gal","");
+		meuhostname = meuhostname.replace(".local","");
+		
+		//remprazamos cadeas que identifican entorno
+		meuhostname = meuhostname.replace(".des","desenvolvemento");
+		meuhostname = meuhostname.replace(".probas","contorna de probas");
+		meuhostname = meuhostname.replace(/\w*.dev/,"desenvolvemento");
+		meuhostname = meuhostname.replace(/\w*stg2/,"contorna de probas");
+		meuhostname = meuhostname.replace(/\w*.stg/,"contorna de probas");
+		meuhostname = meuhostname.replace(".formacion","formación");
+		
+		document.write("<div id='contorno'><i class='fa fa-cogs'></i>"+meuhostname.toUpperCase()+"</div>");
+	}
+</script>
+
+<!-- ********************************************** -->
+</head>
+
+<body>
+	
+		<!--[if (!IE)|(gt IE 9)]><!-->
+			<div id="page-loader">
+		        <div class="dot"></div>
+		        <div class="dot"></div>
+		    </div>
+		<!--<![endif]-->
+	
+	
+	<!-- CABECEIRA -->
+	
+
+
+
+
+
+
+
+
+
+
+<header>
+	<div id="app_nome">
+		 
+		<div id="nomeAplicacion">
+			<a href="/centroseducativos/" accesskey="i" 
+					title="centroseducativos-Consulta e mantemento de centros-Ir á páxina principal. Atallo de teclado: i" >
+				<h1><img alt="centroseducativos" src="https://www.edu.xunta.es/recursosweb/imaxes/svg-apps-educacion/centroseducativos.svg"/><span class="sr-only">centroseducativos</span></h1>
+			</a>
+		</div>
+		<div id="iconoMenu">
+			<a id="linkIconoMenu" href="#" 
+				title='Amosar/Ocultar menú'><span class="glyphicon glyphicon-menu-hamburger" 
+				aria-label='Amosar/Ocultar menú'></span></a>
+		</div>
+	</div>
+	<div id="accesosDirectos">
+
+		 
+		<a href="/centroseducativos/VerAccesibilidade.do" accesskey="a" 
+			title='Pautas de accesibilidade empregadas. Atallo de teclado: a' ><i class="fa fa-universal-access" 
+				aria-label='Accesibilidade e usabilidade' aria-hidden="true"></i></a>
+		
+		 
+		<a href="/centroseducativos/VerAvisoLegal.do" accesskey="v" 
+			title='Avisos legais para usuarios do servizo web. Atallo de teclado: v' ><i class="fa fa-balance-scale" 
+				aria-label='Aviso legal' aria-hidden="true"></i></a>
+	
+			
+
+		<a href="https://www.edu.xunta.es/buzoninformes/" accesskey="b" target="_buzonInformes"  
+			title='Buzón informes. Atallo teclado: b'><i class="glyphicon glyphicon-inbox" 
+				aria-label='Buzón de informes' aria-hidden="true" ></i></a>
+
+	</div>
+	
+	
+		<div id="botonLogin">
+			 			
+			<a href="/centroseducativos/AbrirSesion.do" accesskey="s" 
+				title='Entrar. Atallo de teclado: s'><i class="glyphicon glyphicon-off p-r-5" 
+				aria-label='Entrar' aria-hidden="true" 
+				style="color:green;"></i></a>
+		</div>
+	
+	
+</header>
+
+
+	<div id="contenedorPrincipal">
+		
+
+
+
+
+
+
+
+
+
+	
+
+		
+				
+			<div class="divEdu-menu" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:html="http://struts.apache.org/tags-html" xmlns:edu="http://www.edu.xunta.es"><ul id="nav" class="edu-menu"><li id="Inicio"><a href="/centroseducativos/PaxinaInicio.do" accesskey="i" id="Inicio"><abbr name="MenuPrincipal" title="Inicio. Atallo teclado: i">		  			
+				1.
+				Inicio</abbr></a></li><li id="BuscaCentros"><a href="/centroseducativos/BuscaCentros.do?DIALOG-EVENT-inic" accesskey="2" id="BuscaCentros"><abbr name="MenuPrincipal" title="Buscar centros">		  			
+				2.
+				Busca</abbr></a></li>
+				
+			
+			<li id="ListaCentro"><a href="/centroseducativos/ListaCentros.do" accesskey="b" id="ListaCentro"><abbr name="MenuPrincipal" title="Gu&iacute;a de centros">		  			
+				3.
+				Gu&iacute;a de centros</abbr></a></li>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</ul></div>				 	
+				<script type="text/javascript">
+					$(document).ready(function(){ menuEdu().iniciarMenu('');});	
+				</script>
+		
+				
+		
+		
+			
+				
+				
+			
+		
+		
+		<main>
+			<!-- CORPO -->			
+			<div id="corpo" class="corpo">
+				
+				
+				
+				
+		
+				
+					
+						
+						
+							
+
+ 
+
+
+
+<div class="informacionContexto">  		
+	
+		<br/>
+    	<strong>Curso acad&eacute;mico</strong>:		
+	    2020/2021
+	    <br/>
+    	<strong>Centro</strong>:		
+	    15005269
+	     - 
+    	IES Urbano Lugrís
+  </div>
+  
+  
+  
+						 
+					
+					
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+		
+					
+
+
+
+
+
+
+
+	
+
+<style>
+
+	#pestanasCabeceira #DetalleDatos a {		
+		border-bottom: 0.1em solid #ffffff; 
+		color: #285983;
+		background-color: #ffffff;
+		z-index:999;
+		position: relative;
+	}
+	
+	#pestanasCorpo {
+		/**
+		 * Propietarias: solución provisional ata adaptar a norma CSS3.
+		 */
+		/*-ms-box-sizing: border-box;*/
+		/*-moz-box-sizing: border-box;*/
+		/**
+		 * CSS3: Buscamos recoller o ancho dos elementos de bloque en base ós bordes, e non ó contido.
+		 */
+		/*box-sizing: border-box*/
+	}
+	
+</style>
+
+
+
+<div id="pestanasCabeceira">        
+	
+
+
+
+
+
+
+
+<br/>
+<br/>
+<ul class="pestanasListaCabeceira">
+
+	<li id="DetalleDatos" >		 	
+    	<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a  href='/centroseducativos/CargarDetalleCentro.do?codigo=15005269'
+        title="Mostrar o detalle dos datos do centro">
+        Datos centro
+       </a>       
+   	</li>	
+   	
+   	<li id="LugaresDocencia" >		 	 
+    	<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a  href='/centroseducativos/CargarLugaresDocencia.do?codigo=15005269'
+        title="Mostrar os lugares de docencia do centro">
+        Lugares de docencia 
+       </a>       
+   	</li>
+   	
+	
+	<li id="CadroDirectivo" >	  
+		<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a href='/centroseducativos/CargarCadroDirectivoCentro.do?codigo=15005269'
+  		 title="Mostrar equipo directivo do centro. Atallo de teclado: ALT+o">  		  		
+    	Equipo directivo
+    	</a>	
+    		
+	</li>	
+
+	<li id="OfertaEducativa" >	
+		<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a href='/centroseducativos/CargarOfertaCentro.do?codigo=15005269&amp;procedencia=detalleCentro'
+  		 title="Mostrar oferta educativa do centro. Atallo de teclado: ALT+t">  		  		
+    	Oferta educativa
+    	</a> 		
+   </li>   	  
+   
+
+   
+    <li id="Inspeccion">
+  		<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a href='/centroseducativos/CargarInspeccion.do?codigo=15005269'
+  		 title="Mostrar os datos de inspección do centro">  		  		
+    	Inspección
+    	</a> 
+   </li>
+   
+   <li id="Servizos">
+  		<!-- montaxe de url sen c:url por problemas jsessionid na parte pública -->
+  		
+    	<a href='/centroseducativos/CargarServizosComplementarios.do?codigo=15005269'
+  		 title="Mostrar os servizos complementarios do centro">  		  		
+    	Outros datos
+    	</a> 
+   </li>
+   
+  
+   
+</ul>
+
+
+
+
+
+
+</div>
+
+
+<div id="pestanasCorpo">
+	<div class="AnchoTotal">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/text_utils.js" type="text/javascript"></script>
+<script charset="UTF-8" src="https://www.edu.xunta.es/recursosweb/scripts/validar_tipodoc.js" type="text/javascript"></script>
+
+
+ <script type="text/javascript" 
+      src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCAPqERENuVmmq8W_HPwyXI_mW1yjCEpa0'>
+ </script>
+
+
+
+
+<h1>
+	Datos do centro
+</h1>
+
+<form name="DetalleCentroForm" method="post" action="/centroseducativos/CargarDetalleCentro.do">
+
+
+	<div class="AnchoTotal">
+		<fieldset id="enderezo">
+			<legend>
+				Centro
+			</legend>
+			<div class="LayoutCamposVertical">
+				<div class="LayoutCamposHorizontal">
+					<div>
+						<label for="codigo">Código centro <span class=obrigatorio></span></label>
+						<input type="text" name="codigo" value="15005269" readonly="readonly" style="width:6em">
+					</div>
+					<div>
+						<label for="nome">Nome
+							<span class=obrigatorio></span></label>
+						<input type="text" name="nome" value="IES Urbano Lugrís" readonly="readonly" style="width:30em">
+					</div>
+				</div>
+
+				<div class="LayoutCamposHorizontal">
+					<div>
+						<label for="titular">Titularidade   <span class=obrigatorio></span></label>
+						<input type="text" name="titular" value="Consellería de Cultura, Educación e Universidade" readonly="readonly" style="width:30em">
+					</div>
+
+					
+						<div>
+							<input type="checkbox" name="ensinoConcertado" value="on" disabled="disabled">
+							<label>Ten algún ensino concertado</label>
+							
+						</div>
+					
+				</div>
+			</div>
+		</fieldset>
+	</div>
+
+
+
+	<div id="fieldset1" class="AnchoMetade">
+		<div class="LayoutCamposVertical">
+
+			<fieldset id="enderezo">
+				<legend>
+					Enderezo
+				</legend>
+				<div class="LayoutCamposVertical">
+					<div>
+						<label for="enderezo">Enderezo <span class=obrigatorio></span></label>
+						<input type="text" name="enderezo.enderezo" value="Avenida de Arteixo  " readonly="readonly" style="width:30em">
+					</div>
+					<div>
+						<label for="localidade">Localidade <span class=obrigatorio></span></label>
+						<input type="text" name="enderezo.localidade.nome" value="A Coruña" readonly="readonly" style="width:30em">
+					</div>
+					<div>
+						<label for="concello">Concello <span class=obrigatorio></span></label>
+						<input type="text" name="enderezo.concello.nome" value="Coruña (A)" readonly="readonly" style="width:30em">
+					</div>
+					<div class="LayoutCamposHorizontal">
+						<div>
+							<label for="CP">Cód. postal <span class=obrigatorio></span></label>
+							<input type="text" name="enderezo.CP" value="15007" readonly="readonly" style="width:4em">
+						</div>
+						<div>
+							<label for="provincia">Provincia <span class=obrigatorio></span></label>
+							<input type="text" name="enderezo.provincia.nome" value="Coruña (A)" readonly="readonly" style="width:8em">
+						</div>
+					</div>
+
+				</div>
+			</fieldset>
+
+			<fieldset id="contactos">
+				<legend>
+					Contacto
+				</legend>
+				<div class="LayoutCamposVertical">
+					<div class="LayoutCamposHorizontal">
+						<div>
+							<label for="telefono">Teléfono <span class=obrigatorio></span></label>
+							<input type="text" name="contacto.telefono" value="881960715" readonly="readonly" style="width:6em">
+						</div>
+						<div>
+							<label for="fax">Fax
+								<span class=obrigatorio></span></label>
+							<input type="text" name="contacto.fax" value="881960724" readonly="readonly" style="width:6em">
+						</div>
+					</div>
+
+					<div>
+						<label for="correo">Enderezo electrónico <span class=obrigatorio></span></label>
+						
+							
+							
+								
+								<img src="/centroseducativos/tmp/textoAimaxe_2011202329_5263899871814578476.png" />
+						    
+						
+					</div>
+					<div>
+						<label for="www">Enderezo web
+							<span class=obrigatorio></span></label>
+						<input type="text" name="contacto.www" value="http://www.edu.xunta.gal/centros/iesurbanolugris/" readonly="readonly" style="width:30em">
+
+						
+							<a href='http://www.edu.xunta.gal/centros/iesurbanolugris/' class="enlaceExterno"
+								target="_blank" title="URL do centro">
+								Ver web
+							</a>
+						
+					</div>
+				</div>
+			</fieldset>
+			
+			
+			
+		</div>
+	</div>
+
+	<div id="fieldset2" class="AnchoMetade">
+		<fieldset>
+			<legend>
+				Localización
+			</legend>
+			<div id="map" style="width: 600px; height: 400px"></div>
+
+		</fieldset>
+	</div>
+
+	<div id="descricionPerimetral" class="LayoutCamposHorizontal">
+	   	<fieldset>
+			<p id="contido"><p> 
+		</fieldset>								
+	</div>
+
+</form>
+
+
+
+
+
+
+<script type="text/javascript">
+
+var latGalicia = '42.871740';
+var lonGalicia = '-8.547505';
+var urlRaiz = 'https://www.edu.xunta.es/axudaplicacion/files/centroseducativos/';
+google.maps.event.addDomListener(window, 'load', function() {
+	
+		var cargarNoMapa = true;
+		if(document.getElementsByName("amosarNoMapa")[0]){
+			cargarNoMapa = document.getElementsByName("amosarNoMapa")[0].value;
+		}
+	  // Recuperamos a localizacion e os parametros do mapa (centro e zoom)
+	  var lista = '43.350506|-8.418542';
+	  var listaNomes = 'IES Urbano Lugrís-Edificio Principal';
+	  var listaCentros ='15005269';
+	  var nivelZoom = '15';
+	  var centrar = 'S';
+	  var locationArray = new Array();
+	  var markerArray = new Array();
+	  
+	  if(lista != "" && cargarNoMapa){
+	   	var coorSeparadas = getListaCoordenadas(lista);
+	   	var listaNomesSeparados = getListaNomes(listaNomes);
+	   	var listaCentrosSeparados = getListaCentros(listaCentros);
+	   	      
+	   	for (i=0;i<coorSeparadas.length;i++){
+	    	  var coorX = getCoordenadasXY(coorSeparadas[i],"X");
+	    	  var coorY = getCoordenadasXY(coorSeparadas[i],"Y");
+	    	 
+	    	  var local = new google.maps.LatLng(coorX, coorY);
+	    	  locationArray.push(local);
+	      }
+	  }else{
+		  if(centrar == "S"){
+		  alert("Non se teñen datos de xeolocalización para este centro " );
+		  centrar = "N";
+		  }
+		  return;
+	  }
+	  
+	  // Coordenadas do centro de Galicia aproximadamente
+      var centroMap = new google.maps.LatLng(latGalicia, lonGalicia);
+	  // Se se quere centrar na lista de resultados indícase. Se non, o centro 
+	  // do mapa será o centro de Galicia
+	  if(centrar == "S"){
+	      if(locationArray.length != 0){
+	    	  centroMap = locationArray[0];
+	      }  
+	  }
+      
+      
+      var mapOptions = {
+  	      center: centroMap,
+  	      zoom: parseInt(nivelZoom),
+  	      mapTypeId: google.maps.MapTypeId.HYBRID 
+  	    };
+      
+      var map = document.getElementById("map");
+      
+ 	  var mapXeo = new google.maps.Map(document.getElementById("map"),
+ 	       mapOptions);
+    
+ 	
+ 	 var contentString = '<div id="content">'+
+     '<p><a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+     'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+     '</p>'+
+     '</div>';
+     
+     var infoWindow = new google.maps.InfoWindow({
+         content: contentString
+     });
+ 	 
+ 	var onMarkerClick = function() {
+	      var marker = this;
+	      var latLng = marker.getPosition();
+	      
+	      var index = markerArray.indexOf(marker);
+	      
+	      var contenido = '<div id="content">'+
+	      '<h6><p>' +
+	      listaNomesSeparados[index]  + 
+	      '<a href="CargarDetalleCentro.do?codigo='+ listaCentrosSeparados[index] + '">'+
+	      ' máis datos</a> '+
+	      '</p></h6>'+
+	      '</div>';
+			infoWindow.setContent(contenido);	            
+	      infoWindow.open(mapXeo, marker);
+	    };
+	    google.maps.event.addListener(mapXeo, 'click', function() {
+	      infoWindow.close();
+	    });
+	 
+ 	 
+ 	 for (k=0;k<locationArray.length;k++){ 
+	 	 markerArray.push(new google.maps.Marker(
+	 		{position: locationArray[k],
+	         map: mapXeo,
+	         title: listaNomesSeparados[k]}
+	 	 ));
+	 	
+ 	 }
+ 	  	 
+ 	 for (p=0;p<markerArray.length;p++){ 
+ 		 google.maps.event.addListener(markerArray[p], 'click', onMarkerClick); 	
+ 	 }
+      
+   }
+   )
+  
+  function getListaCoordenadas(listacoordenadas) {
+	  
+	    var arrayAsAString = listacoordenadas;
+	    var realJsString = arrayAsAString + "";
+	    var coordenadas = realJsString.split("_");
+	
+	    return coordenadas;
+	 }
+  
+  function getListaNomes(listaNomes) {
+	  
+	    var arrayAsAString = listaNomes;
+	    var realJsString = arrayAsAString + "";
+	    var nomes = realJsString.split("|");
+	
+	    return nomes;
+	 }
+  
+  function getListaCentros(listaCentros) {
+	  
+	    var arrayAsAString = listaCentros;
+	    var realJsString = arrayAsAString + "";
+	    var centros = realJsString.split("|");
+	
+	    return centros;
+	 }
+  
+  
+  function getCoordenadasXY(coordenadas, XY) {
+	  
+	    var arrayAsAString = coordenadas;
+	    var realJsString = arrayAsAString + "";
+	    var coorXY = realJsString.split("|");
+	    var gpsX = coorXY[0];
+	    var gpsY = coorXY[1];
+	    
+	    if (XY == "X"){
+	    	return parseFloat(gpsX);
+	    }else{
+	    	return parseFloat(gpsY);
+	    }
+	 }
+
+  
+  function mostra_oculta(id, styleDisplay) {
+		if (document.getElementById) {
+			var el = document.getElementById(id);
+			el.style.display = styleDisplay; //posibles valores para styleDisplay: block (mostra), none (oculta)
+			el.scrollIntoView(true);
+		}
+  }
+
+  
+  if (!Array.prototype.indexOf) {
+	    Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
+	        "use strict";
+	        if (this == null) {
+	            throw new TypeError();
+	        }
+	        var t = Object(this);
+	        var len = t.length >>> 0;
+	        if (len === 0) {
+	            return -1;
+	        }
+	        var n = 0;
+	        if (arguments.length > 1) {
+	            n = Number(arguments[1]);
+	            if (n != n) { // shortcut for verifying if it's NaN
+	                n = 0;
+	            } else if (n != 0 && n != Infinity && n != -Infinity) {
+	                n = (n > 0 || -1) * Math.floor(Math.abs(n));
+	            }
+	        }
+	        if (n >= len) {
+	            return -1;
+	        }
+	        var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
+	        for (; k < len; k++) {
+	            if (k in t && t[k] === searchElement) {
+	                return k;
+	            }
+	        }
+	        return -1;
+	    }
+	}
+  
+  
+  </script>  
+
+
+
+
+
+<script type="text/javascript">
+
+mostra_oculta('descricionPerimetral','none');
+
+	function cargarAreaInfluencia() {
+
+		var checkArea = document.getElementById('areaInfluencia');
+		var codigoCentro = document.forms[0].codigo.value;
+		
+		
+		// Recuperamos a localizacion e os parametros do mapa (centro e zoom)
+		var lista = '43.350506|-8.418542';
+		var listaNomes = 'IES Urbano Lugrís-Edificio Principal';
+		var listaCentros ='15005269';
+		var nivelZoom = '15';
+		var centrar = 'S';
+		var locationArray = new Array();
+		var markerArray = new Array();
+		
+		// Recuperamos la coordenada del edificio principal al menos para centrar
+		if (lista != "") {
+			var coorSeparadas = getListaCoordenadas(lista);
+			var listaNomesSeparados = getListaNomes(listaNomes);
+			var listaCentrosSeparados = getListaCentros(listaCentros);
+			
+			for (i=0;i<coorSeparadas.length;i++){
+		    	  var coorX = getCoordenadasXY(coorSeparadas[i],"X");
+		    	  var coorY = getCoordenadasXY(coorSeparadas[i],"Y");
+		    	 
+		    	  var local = new google.maps.LatLng(coorX, coorY);
+		    	  locationArray.push(local);
+		      }
+
+		} else {
+			if (centrar == "S") {
+				alert("Non se teñen datos de xeolocalización para este centro ");
+				centrar = "N";
+			}
+		}
+
+		// Coordenadas do centro de Galicia aproximadamente
+		var centroMapa = new google.maps.LatLng(latGalicia,	lonGalicia);
+		// Se se quere centrar na lista de resultados indícase. Se non, o centro 
+		// do mapa será o centro de Galicia
+		if (centrar == "S") {
+			if (locationArray.length != 0) {
+				centroMapa = locationArray[0];
+			}
+		}
+
+		var mapOptions = {
+			center : centroMapa,
+			zoom : parseInt(nivelZoom),
+			mapTypeId : google.maps.MapTypeId.HYBRID
+		};
+
+		var mapXeo = new google.maps.Map(document.getElementById("map"),
+				mapOptions);
+		
+		if (checkArea.checked) {
+
+			var urlCapa_22 = urlRaiz + codigoCentro + "_22" + '.kmz';
+			var urlCapa_24 = urlRaiz + codigoCentro + "_24" + '.kmz';
+			var urlCapa_25 = urlRaiz + codigoCentro + "_25" + '.kmz';
+			var urlCapa_29 = urlRaiz + codigoCentro + "_29" + '.kmz';
+			
+			var kmlLayer_22 = new google.maps.KmlLayer({
+				url : urlCapa_22,
+				preserveViewport : true,
+				suppressInfoWindows:true
+			});
+			kmlLayer_22.setMap(mapXeo);
+			var kmlLayer_24 = new google.maps.KmlLayer({
+				url : urlCapa_24,
+				preserveViewport : true,
+				suppressInfoWindows:true
+			});
+			kmlLayer_24.setMap(mapXeo);
+			var kmlLayer_25 = new google.maps.KmlLayer({
+				url : urlCapa_25,
+				preserveViewport : true,
+				suppressInfoWindows:true
+			});
+			kmlLayer_25.setMap(mapXeo);
+			var kmlLayer_29 = new google.maps.KmlLayer({
+				url : urlCapa_29,
+				preserveViewport : true,
+				suppressInfoWindows:true
+			});
+			kmlLayer_29.setMap(mapXeo);
+			
+			google.maps.event.addListener(kmlLayer_22, 'click', function(kmlEvent) {
+				document.getElementById('contido').innerHTML = kmlEvent.featureData.infoWindowHtml;
+				mostra_oculta('descricionPerimetral','block');
+	        });
+			google.maps.event.addListener(kmlLayer_24, 'click', function(kmlEvent) {
+				document.getElementById('contido').innerHTML = kmlEvent.featureData.infoWindowHtml;
+				mostra_oculta('descricionPerimetral','block');
+	        });
+			google.maps.event.addListener(kmlLayer_25, 'click', function(kmlEvent) {
+				document.getElementById('contido').innerHTML = kmlEvent.featureData.infoWindowHtml;
+				mostra_oculta('descricionPerimetral','block');
+	        });
+			google.maps.event.addListener(kmlLayer_29, 'click', function(kmlEvent) {
+				document.getElementById('contido').innerHTML = kmlEvent.featureData.infoWindowHtml;
+				mostra_oculta('descricionPerimetral','block');
+	        });
+
+		}else{
+			
+			 mostra_oculta('descricionPerimetral','none');
+			 
+			 var contentString = '<div id="content">'+
+		     '<p><a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+		     'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+		     '</p>'+
+		     '</div>';
+		     
+		     var infoWindow = new google.maps.InfoWindow({
+		         content: contentString
+		     });
+		 	 
+		 	var onMarkerClick = function() {
+			      var marker = this;
+			      var latLng = marker.getPosition();
+			      
+			      var index = markerArray.indexOf(marker);
+			      
+			      var contenido = '<div id="content">'+
+			      '<h6><p>' +
+			      listaNomesSeparados[index]  + 
+			      '<a href="CargarDetalleCentro.do?codigo='+ listaCentrosSeparados[index] + '">'+
+			      ' máis datos</a> '+
+			      '</p></h6>'+
+			      '</div>';
+					infoWindow.setContent(contenido);	            
+			      infoWindow.open(mapXeo, marker);
+			    };
+			    google.maps.event.addListener(mapXeo, 'click', function() {
+			      infoWindow.close();
+			    });
+			
+			    
+			    for (k=0;k<locationArray.length;k++){ 
+				 	 markerArray.push(new google.maps.Marker(
+				 		{position: locationArray[k],
+				         map: mapXeo,
+				         title: listaNomesSeparados[k]}
+				 	 ));
+				 	
+			 	 }
+			    
+			    
+			    for (p=0;p<markerArray.length;p++){ 
+			 		 google.maps.event.addListener(markerArray[p], 'click', onMarkerClick); 	
+			 	 }
+		} 
+		
+		
+		
+	}
+</script>
+
+	</div>
+	<div class="AnchoTotal">
+		  
+
+
+ 
+<a href="/centroseducativos/BuscaCentros.do?ensinoEspecialidade=&plan=&page=1&resultadosPaxina=10&rexime=&checkCP=&checkCP=false&checkCP=false&checkCP=false&campoDeControl=S&DIALOG-EVENT-buscar=Buscar&DIALOG-EVENT-buscar=&DIALOG-EVENT-buscar=&DIALOG-EVENT-buscar=&DIALOG-EVENT-buscar=&ensinoPrincipal=24&checkWww=&checkWww=false&checkWww=false&checkWww=false&checkTitularidade=&checkTitularidade=false&checkTitularidade=false&checkTitularidade=false&concello=&checkEnderezo=&checkEnderezo=false&checkEnderezo=false&checkEnderezo=false&checkTelefono=&checkTelefono=false&checkTelefono=false&checkTelefono=false&ensinoModalidade=&checkLocalidade=&checkLocalidade=false&checkLocalidade=false&checkLocalidade=false&titularidade=&provincia=&codigo=&checkConcello=&checkConcello=false&checkConcello=false&checkConcello=false&checkNome=&checkNome=false&checkNome=false&checkNome=false&searchid=&checkProvincia=&checkProvincia=false&checkProvincia=false&checkProvincia=false&checkFax=&checkFax=false&checkFax=false&checkFax=false&tipoCentro=&"  title="Botón que permite voltar á última pantalla" class="botazul" >Volver</a>
+
+	</div>	
+</div>
+
+
+
+				
+				
+				
+	
+			</div>
+		</main>
+		
+		<div id="logosExtra">
+			<!--  para pintar outros logos.. FEDER..
+					<a class="linkImaxeCabeceira" href="http://www.xunta.es/feder" accesskey="F" 
+					title="Ir a Portal da Xunta de Galicia. Acceso teclado: ALT+F" >
+					<img alt="FEDER" src="https://www.edu.xunta.es/recursosweb/imaxes/cabeceira/feder_azul_europa_logos_g.png"/>
+			</a>-->
+		</div>
+	</div>
+
+
+	<!-- PE -->		
+    
+
+
+ 
+
+
+
+
+<footer>
+	<div class="footerLogo">
+		<a class="linkImaxeCabeceira" href="https://www.edu.xunta.gal/" accesskey="x" 
+				title='Ir a Portal Educativo da Xunta de Galicia. Acceso teclado: ALT+x' >
+			
+			<img alt="Portal Educativo da Xunta de Galicia" src="https://www.edu.xunta.es/recursosweb/imaxes/logos/cons_cultura_eou-cor-neg.png"/>
+		</a>
+	</div>	
+	<div class="footerInfo">
+		<span>Servizo prestado pola Consellería de Cultura, Educación e Universidade</span>
+	</div>
+	<div class="footerContact">
+		<ul>
+			<li style="border-right: 1px dotted rgba(238,238,238,.7);">
+				<i class="glyphicon glyphicon-bookmark" aria-hidden="true"></i>&nbsp;centroseducativos 1.11.1
+			</li>
+			<li>
+				 	
+				<a href="/centroseducativos/VerContacto.do" class="linkPe" accesskey="c" 
+						title='Como contactar coa consellería?. Atallo de teclado: c' >
+					<i class="glyphicon glyphicon-envelope" aria-hidden="true" 
+						aria-label='Contacto'></i>&nbsp;Contacto
+				</a>
+			</li>
+		</ul>
+	</div>	
+</footer>
+</body>
+</html>
