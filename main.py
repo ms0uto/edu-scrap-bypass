@@ -20,20 +20,20 @@ def init():
     with open('emails', 'a') as emails:
         for center in centers:
             label = center['label']
-            if 'A Coru' in label and 'IES' in label or 'CPR' in label or 'CPI' in label:
+            if 'A Coru' in label and ('IES ' in label or 'CPR ' in label or 'CPI ' in label):
                 id = center['codigo']
-                r = session.get(url + id)
-                image_path = r.html.search('img src="{}"')[0]
-                if image_path is not None:
+                try:
+                    r = session.get(url + id)
+                    image_path = r.html.search('img src="{}"')[0]
                     print('Retrieving center id ' + id + ' email information...')
-                    r = requests.get(domain)
+                    r = requests.get(domain + image_path)
                     with open(id + '.png', 'wb') as f:
                         f.write(r.content)
                     # Image recognition
                     image=Image.open(id + '.png')
                     email=pytesseract.image_to_string(image, lang='eng')
                     emails.write(email)
-                else:
+                except Exception as e:
                     print('Image link not found, skipping center:' + id)
 
     os.system('rm *.png')
